@@ -1,1 +1,1 @@
-#appium_test 
+#appium_autotest 
