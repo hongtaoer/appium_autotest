@@ -1,8 +1,7 @@
-package com.cl.appium.common;
+package com.cl.appium.common.log;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.PropertyConfigurator;
-import org.apache.log4j.xml.DOMConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,10 +13,9 @@ public class Log {
     static {
 
         BasicConfigurator.configure();
-        String configLocation = System.getProperty("user.dir")+"/resource/log4j.properties";
-        System.out.println("========================================"+configLocation);
+        String configLocation = System.getProperty("user.dir") + "/resource/log4j.properties";
+//        System.out.println("========================================"+configLocation);
         PropertyConfigurator.configure(configLocation);
-//        DOMConfigurator.configure("");
     }
 
     /**
@@ -27,7 +25,6 @@ public class Log {
      * @return
      */
     public static Logger getLog(Class clazz) {
-
         return LoggerFactory.getLogger(clazz);
     }
 }
