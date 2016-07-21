@@ -2,10 +2,12 @@ package com.cl.appium.android.shipper.order;
 
 import com.cl.appium.android.shipper.user.ShipperLogin;
 import com.cl.appium.android.shipper.util.CityListSelectUtil;
+import com.cl.appium.common.log.Log;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.slf4j.Logger;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,9 +18,11 @@ import java.util.concurrent.TimeUnit;
  *
  */
 public class CJPublishOrder {
+	private static final Logger LOG = Log.getLog(CJPublishOrder.class);
 
 	public static void publish(AndroidDriver<MobileElement> driver) {
 
+		LOG.info("安卓系统货主版开始发布城际订单:");
 		try {
 //			// 首先用【首页】按钮判断用户是否已登录，若未登录先登录才能发布货源
 //			if (HomeButtonCheckUtil.isShipperHomeButtonExist(driver)) {
@@ -116,10 +120,11 @@ public class CJPublishOrder {
 			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 			//判断页面是否跳转至等待竞价页面
 			Assert.assertTrue("page forward failed", driver.findElementById("com.topjet.shipper:id/tv_title_bar_title").isDisplayed());
-		    
-		
+
+			LOG.info("安卓系统货主版完成发布城际订单:");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			LOG.error("安卓系统货主版发布城际订单失败:\n" + e.getMessage());
 			e.printStackTrace();
 		}
 
