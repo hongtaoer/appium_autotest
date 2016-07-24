@@ -1,5 +1,6 @@
 package com.appium.test.android.driver;
 
+import com.cl.appium.common.log.Log;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AutomationName;
@@ -7,6 +8,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.slf4j.Logger;
 
 import java.io.File;
 import java.net.URL;
@@ -16,7 +18,9 @@ import static org.junit.Assert.assertNotEquals;
 
 public class InitializeDriverAndroidDriver {
 
+	private static Logger LOG= Log.getLog(InitializeDriverAndroidDriver.class);
 	public static AndroidDriver<MobileElement> init(){
+		LOG.info("========登录测试初始化驱动器=====");
 		 AndroidDriver<MobileElement> driver = null;
 		try {
 			// 创建文件夹，设置apk的路径
@@ -43,9 +47,10 @@ public class InitializeDriverAndroidDriver {
 			assertNotEquals(null, caps.getCapability(MobileCapabilityType.DEVICE_NAME));
 			assertEquals(true, caps.getCapability(MobileCapabilityType.APP).equals(appShipper.getAbsolutePath()));
 		} catch (Exception e) {
+			LOG.error("========登录测试初始化驱动器出现异常=====" + e.getMessage());
 			e.printStackTrace();
-		} 
-		
+		}
+		LOG.info("========登录测试初始化驱动器成功=====");
 		return driver;
 	}
 }

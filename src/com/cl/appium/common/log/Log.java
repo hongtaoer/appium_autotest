@@ -14,7 +14,7 @@ public class Log {
 
         BasicConfigurator.configure();
         String configLocation = System.getProperty("user.dir") + "/resource/log4j.properties";
-//        System.out.println("========================================"+configLocation);
+//      System.out.println("========================================"+configLocation);
         PropertyConfigurator.configure(configLocation);
     }
 

@@ -52,7 +52,7 @@ public class FindGoods {
             //选择保价金额
             driver.findElement(By.id("com.topjet.crediblenumber:id/et_my_bidding")).sendKeys("10000");
         } catch (Exception e) {
-            LOG.info("安卓司机版智能找货失败:\n" + e.getMessage());
+            LOG.error("安卓司机版智能找货失败:\n" + e.getMessage());
         }
 
         LOG.info("安卓司机版完成智能找货:");

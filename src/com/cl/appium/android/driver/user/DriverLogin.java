@@ -44,6 +44,7 @@ public class DriverLogin {
         } catch (Exception e) {
             LOG.error("安卓司机版登录失败:\n" + e.getMessage());
             e.printStackTrace();
+            throw e;
         }
     }
 

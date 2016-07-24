@@ -11,6 +11,6 @@ public class DefineTriggeringEventEvaluator implements TriggeringEventEvaluator 
 
     @Override
     public boolean isTriggeringEvent(LoggingEvent loggingEvent) {
-        return loggingEvent.getLevel().isGreaterOrEqual(Level.ERROR);
+        return loggingEvent.getLevel().isGreaterOrEqual(Level.DEBUG);
     }
 }
