@@ -3,6 +3,7 @@ package com.appium.test.android.driver;
 import com.cl.appium.common.log.Log;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
@@ -19,9 +20,9 @@ import static org.junit.Assert.assertNotEquals;
 public class InitializeDriverAndroidDriver {
 
 	private static Logger LOG= Log.getLog(InitializeDriverAndroidDriver.class);
-	public static AndroidDriver<MobileElement> init(){
+	public static AndroidDriver<AndroidElement> init(){
 		LOG.info("========登录测试初始化驱动器=====");
-		 AndroidDriver<MobileElement> driver = null;
+		 AndroidDriver<AndroidElement> driver = null;
 		try {
 			// 创建文件夹，设置apk的路径
 			File classpathRoot = new File(System.getProperty("user.dir"));
@@ -38,7 +39,7 @@ public class InitializeDriverAndroidDriver {
 			capabilities2.setCapability(MobileCapabilityType.APP, appShipper.getAbsolutePath());
 
 
-			driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4725/wd/hub"), capabilities2);// 若存在错误则抛出异常
+			driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4725/wd/hub"), capabilities2);// 若存在错误则抛出异常
 			// 对上面的设置是否成功进行断言
 			Capabilities caps = driver.getCapabilities();
 

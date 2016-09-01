@@ -3,9 +3,10 @@ package com.cl.appium.android.shipper.user;
 import com.cl.appium.android.shipper.util.HomeButtonCheckUtil;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 
 public class PersonalCenter {
-	public static void personal(AndroidDriver<MobileElement> driver){
+	public static void personal(AndroidDriver<AndroidElement> driver){
 		try {
 			// 首先用【首页】按钮判断用户是否已登录，若未登录先登录才能发布货源
 			if (HomeButtonCheckUtil.isShipperHomeButtonExist(driver)) {

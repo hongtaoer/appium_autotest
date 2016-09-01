@@ -23,7 +23,6 @@ public class DefineSMTPAppender extends SMTPAppender{
             }
         });
     }
-
     @Override
     public void append(LoggingEvent event) {
         if (!(checkEntryConditions())) {
@@ -35,6 +34,7 @@ public class DefineSMTPAppender extends SMTPAppender{
         if (this.getLocationInfo()) {
             event.getLocationInformation();
         }
+
         cb.add(event);
         // 事件的个数达到bufferSize的一半的时候就会发一封邮件
         if (this.evaluator.isTriggeringEvent(event)) {
@@ -43,5 +43,4 @@ public class DefineSMTPAppender extends SMTPAppender{
             }
         }
     }
-
 }

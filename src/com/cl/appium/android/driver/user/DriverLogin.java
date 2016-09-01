@@ -3,6 +3,7 @@ package com.cl.appium.android.driver.user;
 import com.cl.appium.common.log.Log;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.slf4j.Logger;
@@ -15,7 +16,7 @@ public class DriverLogin {
 
     private static final Logger LOG = Log.getLog(DriverLogin.class);
 
-    public static void loginByPassword(AndroidDriver<MobileElement> driver) {
+    public static void loginByPassword(AndroidDriver<AndroidElement> driver) {
         LOG.info("安卓司机版开始登录:");
         try {
             // 找到司機版并点击
@@ -43,7 +44,6 @@ public class DriverLogin {
             LOG.info("安卓司机版完成登录:");
         } catch (Exception e) {
             LOG.error("安卓司机版登录失败:\n" + e.getMessage());
-            e.printStackTrace();
             throw e;
         }
     }

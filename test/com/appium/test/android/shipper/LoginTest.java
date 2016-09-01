@@ -3,6 +3,7 @@ package com.appium.test.android.shipper;
 import com.cl.appium.android.shipper.user.ShipperLogin;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -15,7 +16,7 @@ import org.junit.Test;
  */
 public class LoginTest {
 
-	private static AndroidDriver<MobileElement> driver;
+	private static AndroidDriver<AndroidElement> driver;
 
 	// 启动app时 就相当于创建了一个session
 

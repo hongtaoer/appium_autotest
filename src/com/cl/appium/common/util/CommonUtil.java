@@ -9,22 +9,23 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 
 /**
+ *等待时间的公共方法
  * Created by chenl on 7/14/16.
  */
 public class CommonUtil {
 
     private static Logger log = Log.getLog(CommonUtil.class);
-
+    //等待的元素对象为xpath
     public static void WaitForElementPresentByXpath(String locator, int timeout, WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, timeout);
-        try {
+            try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
         } catch (Exception e) {
             log.error("Error found:" + e.getMessage());
             throw new ElementNotFoundException(locator, "", "");
         }
     }
-
+   //等待的元素对象为id
     public static void WaitForElementPresentById(String locator, int timeout, WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, timeout);
         try {

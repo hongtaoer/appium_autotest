@@ -24,6 +24,6 @@ public class PublishOrderTest {
     public void execute() {
         //城际订单发货
          ShipperLogin.loginByPassword(driver);
-        // CJPublishOrder.publish(driver);
+        CJPublishOrder.publish(driver);
     }
 }

@@ -5,6 +5,7 @@ import com.cl.appium.android.shipper.util.CityListSelectUtil;
 import com.cl.appium.common.log.Log;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.slf4j.Logger;
@@ -21,7 +22,7 @@ public class CNPublishOrder {
      * @param driver
      */
 
-    public static void publish(AndroidDriver<MobileElement> driver) {
+    public static void publish(AndroidDriver<AndroidElement> driver) {
         LOG.info("安卓系统货主版开始发布城内订单:");
         try {
             // 判断app是否已登录

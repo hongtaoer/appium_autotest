@@ -1,10 +1,13 @@
 package com.cl.appium.ios.shipper.order;
 
+        import com.cl.appium.common.log.Log;
         import io.appium.java_client.SwipeElementDirection;
         import io.appium.java_client.TouchAction;
         import io.appium.java_client.ios.IOSDriver;
         import io.appium.java_client.ios.IOSElement;
         import org.openqa.selenium.By;
+        import org.slf4j.Logger;
+
         import java.util.concurrent.TimeUnit;
 
 /**
@@ -12,19 +15,18 @@ package com.cl.appium.ios.shipper.order;
  */
 public class CJPublishOrder {
 
-
+    private static final Logger LOG = Log.getLog(CJPublishOrder.class);
     public static void publish(IOSDriver<IOSElement> driver) {
+        LOG.info("iOS货主版开始发布城际订单:");
         try {
             //点击我要发货按钮
-            driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAElement[1]/UIAElement[1]/UIAElement[1]/UIAElement[1" +
-                    "]/UIAElement[1]/UIAElement[1]/UIAElement[1]/UIAElement[1]/UIAElement[1]/UIAScrollView[1]/UIAElement[1" +
-                    "]/UIAElement[2]/UIAButton[1][@name = '(_navigationTransitionView)(_myScrollView)(_middleView)(empty string)']")).click();
-
+            driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAElement[1]/UIAElement[1]/UIAElement[1]/UIAElement[1]/UIAElement[1]/UIAElement[1]/UIAElement[1]/UIAElement[1]/UIAElement[1]/UIAScrollView[1]/UIAElement[1]/UIAElement[1]/UIAButton[2][@name = '(_navigationTransitionView)(_myScrollView)(_bgView)(_topView)(empty string)']")).click();
             //等待2秒
             driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
             //点击选填发货信息(_navigationTransitionView)
-            driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAElement[1]/UIAElement[1]/UIAElement[1]/UIAElement[1]/UIAElement[1][@name = '(_navigationTransitionView)']")).click();
+            driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAElement[1]/UIAElement[1]/UIAElement[1" +
+                    "]/UIAElement[1]/UIAElement[1][@name = '(_navigationTransitionView)']")).click();
             //选择出发地所在地区(_navigationTransitionView)(_topBackView)
             driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAElement[1]/UIAElement[1]/UIAElement[1]/UIAElement[1" +
                     "]/UIAElement[1][@name='(_navigationTransitionView)(_topBackView)']")).click();
@@ -51,6 +53,7 @@ public class CJPublishOrder {
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
             //选择地图聚焦点,并移动获取详细地址
+
             driver.findElement(By.id("NearbyTruck_centerLocation")).swipe(SwipeElementDirection.UP, 1);
 
             //等待3秒
@@ -154,7 +157,7 @@ public class CJPublishOrder {
             driver.findElement(By.id("(_navigationTransitionView)(_tableView)(_wrapperView)(_goodsTypeViewCell)")).click();
 
             //选择[其它]货物类型
-            driver.findElement(By.id("(_contentView)(0d98c74797e49d00bcc4c17c9d557a2b)")).click();
+            driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAElement[2]/UIAButton[26]")).click();
 
             //等待1秒
             driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
@@ -184,7 +187,8 @@ public class CJPublishOrder {
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
             //点击键盘上的[完成按钮]隐藏键盘
-            driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[2]/UIAElement[1]/UIAToolbar[1]/UIAButton[3][@name='(_hostView)']")).click();
+          //  driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[2]/UIAElement[1]/UIAToolbar[1]/UIAButton[3" +
+                    //"][@name='(_hostView)']")).click();
 
             //等待5秒,这里需要等待一段时间才能点击确定按钮,否则报错elementId xx could not be tapped
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -220,7 +224,7 @@ public class CJPublishOrder {
             //选择付款方式
             driver.findElement(By.id("(_navigationTransitionView)(_tableView)(_wrapperView)(_informationFeeViewCell)(_prePartPayButton)")).click();
 
-            //填写配注
+            //填写备注
             driver.findElement(By.id("(_navigationTransitionView)(_tableView)(_wrapperView)(_otherDemandViewCell)(_otherDemandTextView)")).setValue("自动化测试发布城际订单");
 
             //等待5秒,这里需要等待一段时间才能点击确定按钮,否则报错elementId xx could not be tapped
@@ -252,10 +256,9 @@ public class CJPublishOrder {
             //判断订单详情按钮存在
             driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAElement[1]/UIAElement[1]/UIAElement[1]/UIAElement" +
                     "[3][@name='(_navigationTransitionView)']")).isDisplayed();
-
+            LOG.info("IOS货主版完成发布城际订单:");
         } catch (Exception e) {
-
-            System.out.println("发布城际货源流程失败,请校验!");
+            LOG.error("============发布城际货源流程失败,请校验!================", e.getMessage());
             e.printStackTrace();
         }
 

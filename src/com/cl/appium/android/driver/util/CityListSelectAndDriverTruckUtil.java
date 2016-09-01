@@ -3,6 +3,7 @@ package com.cl.appium.android.driver.util;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 
 public class CityListSelectAndDriverTruckUtil {
 	/**
@@ -16,7 +17,7 @@ public class CityListSelectAndDriverTruckUtil {
 	 * @param third
 	 *            三级地址名称
 	 */
-	public static void cityListSelect(AndroidDriver<MobileElement> driver, String first, String second, String third) {
+	public static void cityListSelect(AndroidDriver<AndroidElement> driver, String first, String second, String third) {
 
 		if (first.contains("北京") || first.contains("上海") || first.contains("天津") || first.contains("重庆")) {
 			driver.findElementByName(first).click();
@@ -29,17 +30,17 @@ public class CityListSelectAndDriverTruckUtil {
 	}
 	
 	//选择出发地
-	public static void startDepart(AndroidDriver<MobileElement> driver)
+	public static void startDepart(AndroidDriver<AndroidElement> driver)
 	{
 		cityListSelect(driver,"上海",null,"宝山");
 	}
 	//选择目的地
-	public static void endDestination(AndroidDriver<MobileElement> driver)
+	public static void endDestination(AndroidDriver<AndroidElement> driver)
 	{
 		cityListSelect(driver,"天津",null,"武清");
 	}
 	//手动选择车型车长
-	public static void driverTruckLength(AndroidDriver<MobileElement> driver)
+	public static void driverTruckLength(AndroidDriver<AndroidElement> driver)
 	{
 	    
 	}

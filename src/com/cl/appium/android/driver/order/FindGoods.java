@@ -6,6 +6,7 @@ import com.cl.appium.android.driver.util.HomeButtonCheckUtil;
 import com.cl.appium.common.log.Log;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.slf4j.Logger;
@@ -21,7 +22,7 @@ public class FindGoods {
      *
      * @param driver
      */
-    public static void capacityFindgoods(AndroidDriver<MobileElement> driver) {
+    public static void capacityFindgoods(AndroidDriver<AndroidElement> driver) {
 
         LOG.info("安卓司机版开始智能找货:");
         try {
