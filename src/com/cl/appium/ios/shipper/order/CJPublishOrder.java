@@ -120,7 +120,7 @@ public class CJPublishOrder {
             driver.findElement(By.id("(_navigationTransitionView)(_topBackView)(_contactMobileTextField)")).setValue("18602108194");
 
             //点击确定按钮完成收货信息填写(_navigationTransitionView)(_sureButton)
-            driver.findElement(By.id("(_navigationTransitionView)(_sureButton)")).click();
+            driver.findElement(By.id("(_navigati onTransitionView)(_sureButton)")).click();
 
             //等待1秒
             driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
